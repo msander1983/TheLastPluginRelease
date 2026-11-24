@@ -1,5 +1,8 @@
 # The Last Plugin — Release notes
 
+## 1.1.1 (2026-11-24)
+- "Buy a license…" now opens the Gumroad store.
+
 ## 1.1.0 (2026-11-24)
 - Project health check: the first time you open the chat on a project, it checks the project on your PC (no AI, nothing sent) and shows a score, counts and the top findings: broken links, images without alt text, lists typed as paragraphs, tables without headers, variable values typed out, duplicated content, topics without h1 or outside any TOC. One-click local fixes (repair links to moved files, real lists, header rows, use the variables) queue the changes for review; the rest can be handed to the AI. Run it again any time from the chat's ⋯ menu or the command palette.
 - Explain this: the editor's ✦ AI right-click menu offers questions about what's under the caret: a link or cross-reference (fix it when broken), condition tags, a variable, a snippet, an image, and the last build's errors.

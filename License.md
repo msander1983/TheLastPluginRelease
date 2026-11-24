@@ -36,7 +36,7 @@ The Application is a plugin for MadCap Flare and requires:
 - Microsoft .NET Framework 4.8, licensed by Microsoft as part of Windows.
 - For AI features, an account and API key with an AI provider of your choice (see AI services), or a locally installed model server.
 
-The Application can optionally work together with other Improvementsoft plugins for MadCap Flare when they are installed; those are licensed under their own terms. The Application connects to Sander Improvement Software AB's license server for license validation and checks for updates; payments are handled by Lemon Squeezy under its terms.
+The Application can optionally work together with other Improvementsoft plugins for MadCap Flare when they are installed; those are licensed under their own terms. The Application connects to Sander Improvement Software AB's license server for license validation and checks for updates; payments are handled by Gumroad under its terms.
 
 The Application does not include third-party libraries; it uses only MadCap Flare's plugin interface and the Microsoft .NET Framework. The installer is built with NSIS (Nullsoft Scriptable Install System), licensed under the zlib/libpng license.
 
