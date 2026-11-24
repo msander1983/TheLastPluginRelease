@@ -1,0 +1,87 @@
+# The Last Plugin — Release notes
+
+## 1.1.0 (2026-11-24)
+- Project health check: the first time you open the chat on a project, it checks the project on your PC (no AI, nothing sent) and shows a score, counts and the top findings: broken links, images without alt text, lists typed as paragraphs, tables without headers, variable values typed out, duplicated content, topics without h1 or outside any TOC. One-click local fixes (repair links to moved files, real lists, header rows, use the variables) queue the changes for review; the rest can be handed to the AI. Run it again any time from the chat's ⋯ menu or the command palette.
+- Explain this: the editor's ✦ AI right-click menu offers questions about what's under the caret: a link or cross-reference (fix it when broken), condition tags, a variable, a snippet, an image, and the last build's errors.
+- Pin a conversation to a topic (right-click its tab): it opens again whenever you open that topic.
+- Conversation tabs shrink to fit; tabs that don't fit go into a "+N" menu instead of sliding under the edge. Mouse wheel over the tabs switches tabs. The attach button has a plain icon that matches the others.
+- Migration and post-import cleanup: assess a source folder before migrating (type, size, paste artifacts, broken links, effort, recommended importer and recipes); import an HTML folder with images and a nested TOC; check that nothing was lost after an import.
+- Cleanup recipes: target content with CSS selectors and clean it up with 36 actions (unwrap, rename, wrap, merge lists, links → cross-references, notes, drop-downs, Word/Office clutter …). Build your own recipes from those actions and save them per project or for all projects. Always try a dry run first.
+- Content reuse: find duplicate and near-duplicate content as a ranked worklist, turn duplicates into a snippet and replace the copies, find inline copies of existing snippets, text that should be a variable, and unused or once-used snippets and variables.
+- Project-wide renames of a variable, condition tag (or set) and style class, including every reference.
+- Localization: translation readiness check, wording inconsistencies (drop-down/dropdown, click/select) with one-step harmonizing, an AI translatability review with suggested rewrites, and a translation cost estimate.
+- AI alt text: the AI looks at each image and writes alt text (Anthropic and OpenAI models).
+- Quality: external link check and a stylesheet audit (unused, undefined and duplicate styles, repeated inline styles).
+- Rate limits from AI providers are respected more precisely (waits for the time the provider says).
+- License agreement updated: AI results vary with the provider and model you use; dependencies (MadCap Flare, .NET Framework, your AI provider) listed.
+- More AI providers (Settings > AI providers > More providers): Google Gemini, Mistral, xAI Grok, DeepSeek, OpenRouter, Groq, Together, Fireworks, Cerebras, Hugging Face, NVIDIA NIM, and local models with Ollama or LM Studio. Each has its own key, model list (Fetch models) and can be used per agent.
+- AI disclaimer: the chat, welcome screen and review window remind you that AI can make mistakes; check changes before you accept them and content before you publish.
+- Build codes: explain_build_code explains any Flare build warning/error code (all 573 codes Flare defines, with fix hints for the common ones); read_build_log shows the code name and fix for each group.
+- Custom JavaScript in HTML5 output: add_output_script adds a script (yours, or a preset: live search dropdown, back to top, external links in a new tab) to the template page; verify it after a build; set_build_event for pre/post-build commands.
+- Page layouts: update_page_layout changes size, orientation and margins safely (frames follow); describe_page_layout reports layout problems. propose_edit tolerates whitespace differences and shows the closest text when it can't find a passage.
+- Build troubleshooting: read_build_log reads Flare's .mclog build logs (finished or crashed, duration, errors and warnings grouped by kind and file, the last topic before a crash); find_failing_topic finds the topic that breaks a build by building halves of the TOC on scratch copies.
+- Queue messages: while the AI works, Enter (or ↑, a task's Start, a right-click prompt) adds your message to a queue above the input; each one is sent when the previous request finishes. Reorder, edit or remove queued messages; Stop, an error or a limit pauses the queue until you press Resume.
+- Attach files and images to a message: 📎 button, paste (Ctrl+V a screenshot or copied files) or drag them onto the chat. The AI sees images and PDFs (Anthropic and OpenAI), reads text, Markdown, Word, PowerPoint and Excel files, and can save an attachment into the project (e.g. a screenshot into Content/Resources/Images). Large images are scaled down; attachments are kept with the conversation.
+- Page layouts: create_page_layout builds print layouts like Flare's templates (size, orientation, mirrored margins, first/left/right/empty pages, headers/footers with page number, chapter, running head, columns); describe_page_layout explains an existing one.
+- ~45 new Flare tools from the Flare user manuals: target print/LMS/search settings and per-target variables, TOC entry editing (move, remove, chapter breaks, page layouts), "what does this target include", batch builds and publishing, micro content, context-sensitive help IDs (alias + header + developer hand-off), meta tags, concepts, search filters and synonyms, auto-index and See/See Also links, relationship tables, browse sequences, skins, table and list fixes, drop-downs/togglers/footnotes/proxies/video, CSS by medium, eLearning questions, languages, export for translation, Flare review/import dialogs.
+- Flare knowledge from the MadCap cheat sheets (print, lists, styles, search, micro content, CSH, eLearning, project files, shortcuts) is built into the playbook; matching recipes load the tools they need.
+- Warnings in the review when an edit touches a file linked from another Flare project (it would be overwritten on reimport) or adds a <script>.
+- New checks: tables without header rows, paragraphs typed as lists, undefined meta tags.
+- Dock the chat inside Flare's window (⇥ in the chat's title bar; ⧉ floats it again). Drag its left edge to resize. Flare's window layout is not changed.
+- #instructions work anywhere you write a prompt: in a sentence ("Review this topic based on the #styleguide"), inside /commands, right-click AI prompts, agent instructions and standing instructions. An instruction can mention another (one level deeper).
+- Team folder (Settings > Agents & routing): a shared folder (network share, synced SharePoint/OneDrive folder or git clone) whose /commands and #instructions, e.g. #styleguide, apply to every project. Order: built-in > yours > team > project.
+- #styleguide: a built-in style guide you can replace globally or per project (/styleguide or the ... menu). It is also the house style for the "Apply house style" actions.
+- Review and accept: AI changes wait in the chat with a "Review and accept (N)" button (and Discard) instead of the review popping up; later requests add to them. Leaving the conversation asks you to review or discard. Settings > Editing & safety can open the review by itself again.
+- Images, PDFs and other non-XML files: conditions go in Flare's "<file>.props" sidecar (apply_condition, read_file, where_used handle it).
+- "Open the latest file I worked on": list_files can sort by last change.
+- The AI can only change files inside the open Flare project, and never in source control (.git, .svn, …), Output/ or the backups.
+- Limits: 0 = unlimited model calls / tokens.
+- OpenAI: older models (gpt-4o, gpt-4.1) get their output limit, pro models run at high effort, chat-latest models work, non-chat models are hidden from the list.
+- Tasks: collapse/expand all categories, archive or delete done tasks, show and restore the archive.
+- Logs: an HTML log of each request (tool calls, answers, errors) and a plugin log in Documents\TheLastPlugin\logs (⋯ › Open logs folder; Settings › Editing & safety turns them off).
+- Editor for #instructions and /commands (/instructions or ⋯ menu): change built-ins like #concise, globally or for this project only.
+- Prompt templates are removed from the chat for now (the short commands /review, /check, /links… stay).
+- Agents: Generalist, Researcher, Writer, Reviewer, Publisher, Classifier — each with its own instructions, provider, model and tools (edit agents.json). Pick one or use Auto routing (OpenAI Decisions API when an OpenAI key is set).
+- Auto-classification: label topics with your taxonomy as Flare meta tags, with confidence; every label is reviewed before it's applied.
+- ~60 new tools: tracked changes, annotations, glossary, index keywords, conditions, element attributes, target settings, issues, XSLT/XPath bulk transforms, git, AI actions, knowledge search, terminology, spell check.
+- Conversations are saved and can be switched, renamed and deleted; replies render as Markdown.
+- Maximize the chat window over Flare.
+- Documentation window (? in the chat, Help on the ribbon): a short guide to getting started, what to ask, reviewing changes and shortcuts.
+- Light and dark mode for the chat (⋯ menu, command palette, or ask the chat); "system" follows Windows.
+- Copy buttons for the whole conversation and for each message.
+- The chat scrolls to your new message and follows the reply.
+- New files the AI created are listed after you apply them, with Flare's Locate in TOC and Locate in Explorer; right-click any file link in the chat for the same.
+- New icon: The Last HAT portrait on the chat bubble, the AI Chat ribbon button, the chat window and the installer.
+- Conversations open as tabs (+ for a new one, × or middle-click to close, double-click to rename, Ctrl+Tab / Ctrl+T / Ctrl+W); History lists all conversations.
+- The review window wraps long lines (toggle "Wrap lines") and highlights the changed words inside each changed line.
+- Tasks pane on the left of the chat (open by default; ‹ collapses it to a thin rail): cards for work to do later, in categories (Backlog, To do, Doing, Blocked, Done by default; ⋯ › Edit categories; drag a card onto a category or right-click it to move it), saved with the project (TheLastPlugin\tasks.json). Add them in the pane or with /task; the AI adds follow-ups it notices and marks tasks done. Drag a card onto the chat (it goes in as @task:N), or Start in chat.
+- / commands, @ references and # instructions in the chat, with suggestions as you type: `/review`, `/build HTML5`, `/track on`; `@this`, `@selection`, `@Intro.htm`, `@var:General.Product`, `@writer`; `#plan`, `#concise`, `#tracked`. Add your own as Markdown files (`/folder`), or share them with the project in `TheLastPlugin\commands` and `TheLastPlugin\instructions`.
+- Task tools for everyday Flare jobs, so the AI writes the right markup: list_images, set_image_alt, set_image_size (classes, thumbnails), insert_link (cross-references and hyperlinks), retarget_links (fix links after a move), insert_snippet, apply_condition (keeps existing tags), apply_style, remove_local_formatting, set_topic_properties (title, meta description), insert_mini_toc, add_related_topics.
+- Flare playbook: built-in recipes for Flare tasks (alt text, cross-references, snippets, conditions, TOCs, targets…) go with matching requests, and the AI can look them up (flare_howto). Extend it with your own recipes.
+- Flare's own Reports/Analysis are available to the AI (flare_reports_summary, flare_report): broken links and bookmarks, undefined and unused items, accessibility, topics not in a TOC and more.
+- Fixed: asked to add alt text, the AI could look at image files instead of the alt attributes of the images in topics.
+- "Approve changes" checkbox under the chat input (on by default): off applies AI changes without the review dialog; Undo and backups still work. Also /approve on|off.
+- Fixed: list_files failed when the AI asked for a file extension (fltar, flvar, htm) instead of a kind; kinds are now forgiving.
+- Fixed: Auto could send a request to change files to a read-only agent (Reviewer, Researcher), which then said editing tools weren't available. A change request now goes to the Generalist even when a read-only agent is picked, and any agent can hand a request to a better-suited one mid-way (hand_off).
+- Fixed: lookups the AI fans out in parallel (read_file, open_file) were cut off after 8 per reply; read-only calls now allow 40.
+- Fixed: run_checks could fail when the same problem appeared twice in a file; list_plugin_api failed when a plugin referenced a missing assembly.
+- Esc closes the /, @ and # suggestion list without hiding the chat.
+- The chat opens in the middle of Flare's window.
+- Tool calls are grouped into one quiet line with a live spinner showing what's running (e.g. "Read file · Content/Intro.htm… 2/5"); click to show the calls, or turn on ⋯ → Show tool calls to always see them. A spinner in the footer shows when the AI is thinking.
+- Editable system prompt (Settings › Agents & routing › Edit system prompt…): "How to work" and "Navigating Flare" sections, hidden from the chat, with Reset to the built-in text.
+- "Track changes" checkbox under the chat input: apply AI edits to open topics as Flare tracked changes. Tracked edits now mark only the changed blocks or list items, skip whitespace-only (line-wrap) differences, and turn on Flare's Show Changes.
+- Microsoft Azure OpenAI as a provider (endpoint + key + deployment).
+- Decisions API settings on the AI providers page: on/off, endpoint, model and an optional own key (the OpenAI key is only used with OpenAI's own endpoint).
+- Fixed: the "✦ AI" right-click menu in the topic editor was missing when a whole element was selected and after a topic reloaded.
+- Model lists are fetched from the providers (Anthropic, OpenAI, Azure deployments, OpenAI-compatible): automatically when Settings opens, or with Fetch models; the chat can list them too.
+- The status bar shows tokens used in the request and in the whole conversation. Dollar estimates, the per-request cost limit and the monthly spending cap are removed: providers bill you directly, so set spending limits in their console.
+- Fixed: numbered lists with sub-bullets restarting at 1; spell check using the Windows display language instead of the text's language; file paths in code and Output/report paths not clickable.
+- Configure The Last Plugin from the chat: providers, models, limits, agents, standing instructions and right-click prompts (each change asks first; API keys are typed into a secure dialog, never seen by the AI).
+- Optional Reviewer pre-check of AI changes, audit log and token usage report.
+## 1.0.0 (2026-11-13)
+- AI chat docked as a pane inside MadCap Flare (Flare 16 and later).
+- Works in your project: search, read, edit, create topics/snippets, TOCs, variables, rename with link fixing, broken links, builds.
+- Every content change is reviewed in a diff before it is written; edits to open documents go through Flare's editor (undo, optional tracked changes).
+- Runs features of your other Improvementsoft plugins (Markdown, AI Helper, Kaizen, MadQuality) and any Flare ribbon command.
+- Bring your own key: Anthropic (default Claude Opus 5.5), OpenAI or any OpenAI-compatible endpoint. Keys stored encrypted for your Windows account.
+- 14-day trial and LemonSqueezy licenses with signed, machine-bound tokens.
