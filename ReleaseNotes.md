@@ -1,5 +1,8 @@
 # The Last Plugin — Release notes
 
+## 1.1.2 (2026-11-24)
+- "Buy a license…" now opens the yearly membership on Gumroad.
+
 ## 1.1.1 (2026-11-24)
 - "Buy a license…" now opens the Gumroad store.
 
