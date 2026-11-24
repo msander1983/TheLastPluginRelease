@@ -1,5 +1,8 @@
 # The Last Plugin — Release notes
 
+## 1.1.3 (2026-11-24)
+- New license agreement for business use: per-seat licensing (one named user, one active computer), subscription renewal and cancellation via Gumroad, clearer AI-provider responsibilities, privacy section listing exactly what the plugin sends, and Swedish courts for disputes.
+
 ## 1.1.2 (2026-11-24)
 - "Buy a license…" now opens the yearly membership on Gumroad.
 
